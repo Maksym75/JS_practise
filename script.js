@@ -181,3 +181,36 @@ console.log("copyNumbers", copyNumbers);
 
 const cloneObject = { ...personalMovieDB1 };
 console.log("cloneObject", cloneObject);
+
+const soldier = {
+  health: 400,
+  armour: 100,
+
+  sayHello(data) {
+    console.log(`Hello ${data}`);
+  },
+};
+const Masha = { health: 222 };
+Object.setPrototypeOf(Masha, soldier);
+
+console.log(Masha.health);
+console.log(Masha.armour);
+
+// * более правильно
+const john = Object.create(soldier);
+
+john.sayHello("kuku");
+console.log(john.health);
+console.log(john.armour);
+
+// 1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+// перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+// Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+
+// 2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+// переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+
+// 3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку.
+// Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены -
+// при помощи метода forEach вывести в консоль сообщения в таком виде:
+// "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
